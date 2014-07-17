@@ -1,4 +1,3 @@
-bookmarks.js
-============
+# BookmarksJS
 
 Yet another bookmarking app
