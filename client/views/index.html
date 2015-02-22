@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bookmarkApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <p>Hello!</p>
+
+    <!-- Bookmarks View -->
+    <div ng-controller="bookmarksController">
+      <h1>There are {{bookmarks.length}} bookmarks</h1>
+
+      <ul>
+        <li ng-repeat="bookmark in bookmarks">
+          {{bookmark.name}}
+        </li>
+      </ul>
+
+      <form ng-submit="createBookmark()">
+        <input type="text" placeholer="Bookmark name" ng-model="bookmarkName"></input>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers/bookmarks-controller.js"></script>
   </body>
 </html>
