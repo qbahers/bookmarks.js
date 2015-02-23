@@ -17,6 +17,7 @@ app.use('/js', express.static(__dirname + '/client/js'));
 
 app.get('/api/bookmarks', bookmarksController.list);
 app.post('/api/bookmarks', bookmarksController.create);
+app.delete('/api/bookmarks/:id', bookmarksController.delete);
 
 app.listen(3000, function() {
   console.log('I\'m Listening...');

@@ -8,7 +8,13 @@ module.exports.create = function (req, res) {
 }
 
 module.exports.list = function (req, res) {
-  Bookmark.find({}, function(err, results) {
+  Bookmark.find({}, function (err, results) {
     res.json(results);
+  });
+}
+
+module.exports.delete = function (req, res) {
+  Bookmark.findByIdAndRemove(req.params.id, function (err, result) {
+    res.json(result);
   });
 }

@@ -16,6 +16,7 @@
       <ul>
         <li ng-repeat="bookmark in bookmarks">
           {{bookmark.name}}
+	  <button ng-click="removeBookmark(bookmark)">Remove</button>
         </li>
       </ul>
 
