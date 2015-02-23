@@ -12,9 +12,11 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
   $scope.createBookmark = function () {
     var bookmark = new Bookmark();
     bookmark.name = $scope.bookmarkName;
+    bookmark.url  = $scope.bookmarkUrl;
     bookmark.$save(function (result) {
       $scope.bookmarks.push(result);
       $scope.bookmarkName = '';
+      $scope.bookmarkUrl  = '';
     });
   };
 

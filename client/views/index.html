@@ -13,17 +13,19 @@
     <div ng-controller="bookmarksController">
       <h1>There are {{bookmarks.length}} bookmarks</h1>
 
+      <form ng-submit="createBookmark()">
+        <input type="text" placeholder="Bookmark name" ng-model="bookmarkName"></input>
+        <input type="text" placeholder="Bookmark url" ng-model="bookmarkUrl"></input>
+        <button type="submit">Add</button>
+      </form>
+
       <ul>
         <li ng-repeat="bookmark in bookmarks">
-          {{bookmark.name}}
+	  <a href="{{bookmark.url}}">{{bookmark.name}}</a> - {{bookmark.url}}
 	  <button ng-click="removeBookmark(bookmark)">Remove</button>
         </li>
       </ul>
 
-      <form ng-submit="createBookmark()">
-        <input type="text" placeholer="Bookmark name" ng-model="bookmarkName"></input>
-        <button type="submit">Add</button>
-      </form>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>

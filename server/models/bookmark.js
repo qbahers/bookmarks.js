@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('Bookmark', {
-  name: String
+  name: String,
+  url:  String
 });
