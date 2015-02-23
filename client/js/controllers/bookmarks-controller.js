@@ -27,4 +27,10 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
       });
     });
   };
+
+  $scope.getHostname = function (url) {
+    var parser = document.createElement('a');
+    parser.href = url;
+    return parser.hostname;
+  };
 }]);

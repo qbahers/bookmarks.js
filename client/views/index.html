@@ -21,7 +21,7 @@
 
       <ul>
         <li ng-repeat="bookmark in bookmarks">
-	  <a href="{{bookmark.url}}">{{bookmark.name}}</a> - {{bookmark.url}}
+	  <a href="{{bookmark.url}}">{{bookmark.name}}</a> - {{getHostname(bookmark.url)}}
 	  <button ng-click="removeBookmark(bookmark)">Remove</button>
         </li>
       </ul>
