@@ -16,9 +16,22 @@
   </head>
   <body>
 
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+	<a class="navbar-brand" href="#">bookmarks.js</a>
+
+	<form class="navbar-form navbar-left" role="search">
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="searchText">
+	  </div>
+	</form>
+      </div>
+    </div>
+  </nav>
+
     <!-- Bookmarks View -->
     <div ng-controller="bookmarksController">
-      <input type="text" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="searchText">
 
       <form ng-submit="createBookmark()">
         <input type="text" placeholder="Bookmark name" ng-model="bookmarkName"></input>
