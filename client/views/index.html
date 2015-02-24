@@ -71,7 +71,7 @@
 	  </button>
 	  <h3 class="bookmark-name"><a href="{{bookmark.url}}">{{bookmark.name}}</a></h3>
 	  <p class="bookmark-hostname">{{getHostname(bookmark.url)}}</p>
-	  <p class="bookmark-date">{{bookmark.date}}</p>
+	  <p class="bookmark-date">Added <span am-time-ago="bookmark.date"></span></p>
         </li>
       </ul>
 
@@ -79,6 +79,9 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.8.2/angular-moment.js"></script>
 
     <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/controllers/bookmarks-controller.js"></script>
