@@ -15,27 +15,26 @@
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
   </head>
   <body>
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">bookmarks.js</a>
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="searchText">
-            </div>
-          </form>
-
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-default navbar-btn navbar-left" data-toggle="modal" data-target="#myModal">
-            Add
-          </button>
-        </div>
-      </div>
-    </nav>
-
     <div ng-controller="bookmarksController">
+
+      <nav class="navbar navbar-default">
+	<div class="container-fluid">
+	  <div class="navbar-header">
+	    <a class="navbar-brand" href="#">bookmarks.js</a>
+
+	    <form class="navbar-form navbar-left" role="search">
+	      <div class="form-group">
+		<input type="text" class="form-control" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="searchText">
+	      </div>
+	    </form>
+
+	    <!-- Button trigger modal -->
+	    <button type="button" class="btn btn-default navbar-btn navbar-left" data-toggle="modal" data-target="#myModal">
+	      Add
+	    </button>
+	  </div>
+	</div>
+      </nav>
     
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -47,13 +46,13 @@
             </div>
             <form ng-submit="createBookmark()">
               <div class="modal-body">
-                 <div class="form-group">
-                  <label for="bookmark-name" class="control-label">Name:</label>
-                  <input type="text" class="form-control" id="bookmark-name" ng-model="bookmarkName">
-                </div>
                 <div class="form-group">
                   <label for="bookmark-url" class="control-label">Url:</label>
                   <input type="text" class="form-control" id="bookmark-url" ng-model="bookmarkUrl">
+                </div>
+                <div class="form-group">
+		  <label for="bookmark-name" class="control-label">Name:</label>
+                  <input type="text" class="form-control" id="bookmark-name" ng-model="bookmarkName">
                 </div>
               </div>
               <div class="modal-footer">
@@ -65,10 +64,13 @@
         </div>
       </div>
 
-      <ul>
-        <li ng-repeat="bookmark in bookmarks | filter:searchText">
-          <a href="{{bookmark.url}}">{{bookmark.name}}</a> - {{getHostname(bookmark.url)}}
-          <button ng-click="removeBookmark(bookmark)">Remove</button>
+      <ul id="bookmarks">
+        <li class="bookmark" ng-repeat="bookmark in bookmarks | filter:searchText">
+          <button class="remove-bookmark btn btn-default btn-sm" ng-click="removeBookmark(bookmark)">
+	    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	  </button>
+	  <h3 class="bookmark-name"><a href="{{bookmark.url}}">{{bookmark.name}}</a></h3>
+	  <p class="bookmark-hostname">{{getHostname(bookmark.url)}}</p>
         </li>
       </ul>
 

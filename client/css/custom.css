@@ -1,0 +1,25 @@
+#bookmarks {
+  list-style-type: none;
+  margin: auto;
+  padding: 20px;
+  max-width: 750px;
+}
+
+.bookmark {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.remove-bookmark {
+  float: right;
+  margin-top: 10px;
+}
+
+.bookmark-name {
+  margin-top: 10px;
+}
+
+.bookmark-hostname {
+  color: #777;
+}
