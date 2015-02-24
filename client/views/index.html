@@ -54,6 +54,10 @@
 		  <label for="bookmark-name" class="control-label">Name:</label>
                   <input type="text" class="form-control" id="bookmark-name" ng-model="bookmarkName">
                 </div>
+                <div class="form-group">
+		  <label for="bookmark-tags" class="control-label">Tags:</label>
+                  <input type="text" class="form-control" id="bookmark-tags" placeholder="e.g. Paris,London,Tokyo" ng-model="bookmarkTags">
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -72,6 +76,7 @@
 	  <h3 class="bookmark-name"><a href="{{bookmark.url}}">{{bookmark.name}}</a></h3>
 	  <p class="bookmark-hostname">{{getHostname(bookmark.url)}}</p>
 	  <p class="bookmark-date">Added <span am-time-ago="bookmark.date"></span></p>
+	  <span class="bookmark-tag label label-primary" ng-repeat="tag in bookmark.tags">{{tag}}</span>
         </li>
       </ul>
 

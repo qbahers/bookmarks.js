@@ -11,12 +11,19 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
 
   $scope.createBookmark = function () {
     var bookmark = new Bookmark();
-    bookmark.name = $scope.bookmarkName;
-    bookmark.url  = $scope.bookmarkUrl;
+    bookmark.name  = $scope.bookmarkName;
+    bookmark.url   = $scope.bookmarkUrl;
+    if ($scope.bookmarkTags === undefined || $scope.bookmarkTags === "") { 
+      bookmark.tags = [];
+    }
+    else {
+      bookmark.tags = $scope.bookmarkTags.split(",");
+    }
     bookmark.$save(function (result) {
       $scope.bookmarks.push(result);
-      $scope.bookmarkName = '';
-      $scope.bookmarkUrl  = '';
+      $scope.bookmarkName  = '';
+      $scope.bookmarkUrl   = '';
+      $scope.bookmarkTags  = '';
     });
   };
 
