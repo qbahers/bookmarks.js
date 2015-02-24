@@ -21,5 +21,11 @@
 }
 
 .bookmark-hostname {
-  color: #777;
+  color: #666;
+  font-size: 15px;
+}
+
+.bookmark-date {
+  color: #888;
+  font-size: 12px;
 }
