@@ -40,4 +40,9 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
     parser.href = url;
     return parser.hostname;
   };
+
+  $scope.bookmarkDate = function (bookmark) {
+    var date = new Date(bookmark.date).getTime();
+    return date;
+  };
 }]);

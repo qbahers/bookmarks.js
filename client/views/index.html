@@ -69,7 +69,7 @@
       </div>
 
       <ul id="bookmarks">
-        <li class="bookmark" ng-repeat="bookmark in bookmarks | filter:searchText">
+        <li class="bookmark" ng-repeat="bookmark in bookmarks | orderBy:bookmarkDate:true | filter:searchText">
           <button class="remove-bookmark btn btn-default btn-sm" ng-click="removeBookmark(bookmark)">
 	    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 	  </button>
