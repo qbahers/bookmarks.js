@@ -25,6 +25,7 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
       $scope.bookmarkUrl   = '';
       $scope.bookmarkTags  = '';
     });
+    $('#myModal').modal('hide');
   };
 
   $scope.removeBookmark = function (bookmark) {
