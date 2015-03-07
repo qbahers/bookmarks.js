@@ -70,9 +70,12 @@
 
       <ul id="bookmarks">
         <li class="bookmark" ng-repeat="bookmark in bookmarks | orderBy:bookmarkDate:true | filter:searchText">
-          <button class="remove-bookmark btn btn-default btn-sm" ng-click="removeBookmark(bookmark)">
+          <!--<button class="remove-bookmark btn btn-default btn-sm" ng-click="removeBookmark(bookmark)">
 	    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-	  </button>
+	  </button>-->
+          <button type="button" class="remove-bookmark btn btn-default btn-sm" data-template="/views/modal.tpl.html" bs-modal="modal">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
 	  <h3 class="bookmark-name"><a href="{{bookmark.url}}">{{bookmark.name}}</a></h3>
 	  <p class="bookmark-hostname">{{getHostname(bookmark.url)}}</p>
 	  <p class="bookmark-date">Added <span am-time-ago="bookmark.date"></span></p>
@@ -82,21 +85,23 @@
 
     </div>
 
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 
     <script src="/bower_components/moment/min/moment.min.js"></script>
     <script src="/bower_components/angular-moment/angular-moment.min.js"></script>
 
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script type="text/javascript" src="/js/controllers/bookmarks-controller.js"></script>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--<script src="/bower_components/jquery/dist/jquery.min.js"></script>-->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!--<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-
     <script src="/bower_components/angular-strap/dist/angular-strap.min.js"></script>
     <script src="/bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/controllers/bookmarks-controller.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

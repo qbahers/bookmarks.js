@@ -46,4 +46,9 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
     var date = new Date(bookmark.date).getTime();
     return date;
   };
+
+  $scope.modal = {
+    "title": "Delete bookmark",
+    "content": "Are you sure you want to delete this bookmark?"
+  };
 }]);

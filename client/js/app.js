@@ -1,4 +1,4 @@
-var app = angular.module('bookmarkApp', ['ngResource', 'angularMoment', 'mgcrea.ngStrap']);
+var app = angular.module('bookmarkApp', ['ngResource', 'ngSanitize', 'angularMoment', 'mgcrea.ngStrap']);
 
 app.constant('angularMomentConfig', {
     preprocess: 'utc',
