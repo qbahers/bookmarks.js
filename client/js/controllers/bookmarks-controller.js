@@ -9,23 +9,22 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
   
   $scope.bookmarks = [];
 
-  $scope.createBookmark = function () {
-    var bookmark = new Bookmark();
-    bookmark.name  = $scope.bookmarkName;
-    bookmark.url   = $scope.bookmarkUrl;
-    if ($scope.bookmarkTags === undefined || $scope.bookmarkTags === "") { 
-      bookmark.tags = [];
+  $scope.createBookmark = function (bookmark) {
+    var bk = new Bookmark();
+    bk.name  = bookmark.name;
+    bk.url   = bookmark.url;
+    if (bookmark.tags === undefined || bookmark.tags === "") { 
+      bk.tags = [];
     }
     else {
-      bookmark.tags = $scope.bookmarkTags.split(",");
+      bk.tags = bookmark.tags.split(",");
     }
-    bookmark.$save(function (result) {
+    bk.$save(function (result) {
       $scope.bookmarks.push(result);
-      $scope.bookmarkName  = '';
-      $scope.bookmarkUrl   = '';
-      $scope.bookmarkTags  = '';
+      bookmark.name  = '';
+      bookmark.url   = '';
+      bookmark.tags  = '';
     });
-    $('#myModal').modal('hide');
   };
 
   $scope.removeBookmark = function (bookmark) {
@@ -45,10 +44,5 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function($scope, Bo
   $scope.bookmarkDate = function (bookmark) {
     var date = new Date(bookmark.date).getTime();
     return date;
-  };
-
-  $scope.modal = {
-    "title": "Delete bookmark",
-    "content": "Are you sure you want to delete this bookmark?"
   };
 }]);

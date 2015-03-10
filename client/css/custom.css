@@ -33,3 +33,7 @@
 .bookmark-tag {
   margin-right: 4px;
 }
+
+.modal-backdrop {
+  opacity: 0.5;
+}
