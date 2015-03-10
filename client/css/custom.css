@@ -37,3 +37,8 @@
 .modal-backdrop {
   opacity: 0.5;
 }
+
+.no-results {
+  color: #666;
+  font-size: 15px;
+}
