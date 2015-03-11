@@ -13,8 +13,7 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/client/views/index.html');
 });
 
-app.use('/js', express.static(__dirname + '/client/js'));
-app.use('/css', express.static(__dirname + '/client/css'));
+app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/views', express.static(__dirname + '/client/views'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
