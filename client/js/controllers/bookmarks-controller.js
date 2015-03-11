@@ -16,7 +16,7 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function ($scope, B
 
     bk.name  = bookmark.name;
     bk.url   = bookmark.url;
-    bk.tags  = (bookmark.tags === undefined || bookmark.tags === "") ? [] : bookmark.tags.split(",");
+    bk.tags  = (bookmark.tags === undefined || bookmark.tags === '') ? [] : bookmark.tags.split(',');
 
     bk.$save(function (result) {
       $scope.bookmarks.push(result);
@@ -29,7 +29,7 @@ app.controller('bookmarksController', ['$scope', 'Bookmark', function ($scope, B
   $scope.removeBookmark = function (bookmark) {
     Bookmark.remove({ id: bookmark._id }, function() {
       $scope.bookmarks.forEach(function (bk, index) {
-	      if (bk._id == bookmark._id) $scope.bookmarks.splice(index, 1);
+        if (bk._id === bookmark._id) { $scope.bookmarks.splice(index, 1); }
       });
     });
   };
