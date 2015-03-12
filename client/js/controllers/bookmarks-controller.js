@@ -1,9 +1,3 @@
-'use strict';
-
-app.factory('Bookmark', ['$resource', function ($resource) {
-  return $resource('/api/bookmarks/:id');
-}]);
-
 app.controller('bookmarksController', ['$scope', 'Bookmark', function ($scope, Bookmark) {
   $scope.bookmarks = [];
 
