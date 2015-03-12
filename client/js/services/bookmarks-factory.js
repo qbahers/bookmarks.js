@@ -1,5 +1,7 @@
 'use strict';
 
-app.factory('Bookmark', ['$resource', function ($resource) {
-  return $resource('/api/bookmarks/:id');
-}]);
+angular
+  .module('bookmarkApp')
+  .factory('Bookmark', ['$resource', function ($resource) {
+    return $resource('/api/bookmarks/:id');
+  }]);
