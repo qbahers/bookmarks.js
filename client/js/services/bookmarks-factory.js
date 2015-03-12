@@ -2,6 +2,10 @@
 
 angular
   .module('bookmarkApp')
-  .factory('Bookmark', ['$resource', function ($resource) {
-    return $resource('/api/bookmarks/:id');
-  }]);
+  .factory('Bookmark', Bookmark);
+
+Bookmark.$inject = ['$resource'];
+
+function Bookmark ($resource) {
+  return $resource('/api/bookmarks/:id');
+}
