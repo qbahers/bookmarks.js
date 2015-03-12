@@ -6,8 +6,4 @@ angular
     'ngSanitize', 
     'angularMoment', 
     'mgcrea.ngStrap'
-  ])
-  .constant('angularMomentConfig', {
-    preprocess: 'utc',
-    timezone: 'Europe/London'
-  });
+  ]);
