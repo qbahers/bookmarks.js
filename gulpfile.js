@@ -19,67 +19,58 @@ var gulp = require('gulp'),
     del = require('del');
 
 var paths = {
-  scripts: ['client/js/module.js', 'client/js/constants.js', 'client/js/controllers/**/*.js', 'client/js/services/**/*.js']
+  scripts: ['client/js/module.js', 'client/js/constants.js', 'client/js/controllers/**/*.js', 'client/js/services/**/*.js'],
+  styles: 'client/css/custom.scss'
 };
 
+// Clean
+gulp.task('clean', function(cb) {
+    del(['build'], cb)
+});
+
 // Styles
-gulp.task('styles', function() {
-  return sass('client/css/custom.scss', {style: 'expanded'})
+gulp.task('styles', ['clean'], function() {
+  return sass(paths.styles, {style: 'expanded'})
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('build/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('build/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
 // Scripts
-gulp.task('scripts', function() {
+gulp.task('scripts', ['clean'], function() {
   return gulp.src(paths.scripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('build/js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('build/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
  
-// Images
-gulp.task('images', function() {
-  //return gulp.src('src/img/**/*')
-  //  .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-  //  .pipe(gulp.dest('dist/img'))
+// Copy all static images
+gulp.task('images', ['clean'], function() {
+  //return gulp.src(paths.images)
+  //  .pipe(cache(imagemin({ optimizationLevel: 5})))
+  //  .pipe(gulp.dest('build/img'))
   //  .pipe(notify({ message: 'Images task complete' }));
 });
  
-// Clean
-gulp.task('clean', function(cb) {
-    del(['dist/css', 'dist/js', 'dist/img'], cb)
-});
- 
-// Default task
-gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
-});
- 
-// Watch
+// Rerun the task when a file changes
 gulp.task('watch', function() {
- 
-  // Watch .scss files
-  gulp.watch('client/css/**/*.scss', ['styles']);
- 
-  // Watch .js files
-  gulp.watch('client/js/**/*.js', ['scripts']);
- 
-  // Watch image files
-  //gulp.watch('src/images/**/*', ['images']);
+  gulp.watch(paths.styles, ['styles']);
+  gulp.watch(paths.scripts, ['scripts']);
+  //gulp.watch(paths.images, ['images']);
  
   // Create LiveReload server
   livereload.listen();
- 
-  // Watch any files in dist/, reload on change
-  gulp.watch(['dist/**']).on('change', livereload.changed);
- 
+  // Watch any files in build/, reload on change
+  gulp.watch(['build/**']).on('change', livereload.changed);
 });
+
+// The default task (called when you run `gulp` from cli)
+gulp.task('default', ['watch', 'scripts', 'images', 'styles']);
