@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('bookmarkApp')
-    .controller('bookmarksController', bookmarksController);
+    .module('bookmarking-app')
+    .controller('BookmarksController', BookmarksController);
 
-  bookmarksController.$inject = ['$scope', 'Bookmark'];
+  BookmarksController.$inject = ['$scope', 'Bookmark'];
 
-  function bookmarksController ($scope, Bookmark) {
+  function BookmarksController ($scope, Bookmark) {
     $scope.bookmarks = [];
 
     Bookmark.query(function (result) {

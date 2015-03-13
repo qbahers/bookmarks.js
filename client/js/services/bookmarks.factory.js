@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('bookmarkApp')
+    .module('bookmarking-app')
     .factory('Bookmark', Bookmark);
 
   Bookmark.$inject = ['$resource'];

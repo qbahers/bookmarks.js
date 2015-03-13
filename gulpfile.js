@@ -17,7 +17,11 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     del = require('del');
- 
+
+var paths = {
+  scripts: ['client/js/module.js', 'client/js/constants.js', 'client/js/controllers/**/*.js', 'client/js/services/**/*.js']
+};
+
 // Styles
 gulp.task('styles', function() {
   return sass('client/css/custom.scss', {style: 'expanded'})
@@ -31,7 +35,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src('client/js/**/*.js')
+  return gulp.src(paths.scripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
