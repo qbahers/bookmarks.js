@@ -15,11 +15,9 @@
     });
 
     $scope.createBookmark = function (bookmark) {
-      var bk = new Bookmark();
-
-      bk.name  = bookmark.name;
-      bk.url   = bookmark.url;
-      bk.tags  = (bookmark.tags === undefined || bookmark.tags === '') ? [] : bookmark.tags.split(',');
+      var bk = new Bookmark(bookmark);
+      
+      bk.tags = (bookmark.tags === undefined || bookmark.tags === '') ? [] : bookmark.tags.split(',');
 
       bk.$save(function (result) {
         $scope.bookmarks.push(result);

@@ -22,7 +22,7 @@
 
     	    <form class="navbar-form navbar-left" role="search">
     	      <div class="form-group">
-          		<input type="text" class="form-control" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="searchText">
+          		<input type="text" class="form-control" placeholder="Search {{bookmarks.length}} bookmarks" ng-model="query">
     	      </div>
     	    </form>
 
@@ -35,9 +35,9 @@
 
     <section>
       <ul id="bookmarks">
-        <li class="no-results" ng-hide="(bookmarks | filter:searchText).length">No results found</li>
+        <li class="no-results" ng-hide="(bookmarks | filter:query).length">No results found</li>
 
-        <li class="bookmark" ng-repeat="bookmark in bookmarks | orderBy:bookmarkDate:true | filter:searchText">
+        <li class="bookmark" ng-repeat="bookmark in bookmarks | filter:query | orderBy:bookmarkDate:true">
           <button type="button" class="remove-bookmark btn btn-default btn-sm" data-template="/views/modal-delete.tpl.html" bs-modal="modal">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
