@@ -1,9 +1,11 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular
-  .module('bookmarkApp', [
-    'ngResource', 
-    'ngSanitize', 
-    'angularMoment', 
-    'mgcrea.ngStrap'
-  ]);
+  angular
+    .module('bookmarkApp', [
+      'ngResource', 
+      'ngSanitize', 
+      'angularMoment', 
+      'mgcrea.ngStrap'
+    ]);
+})();

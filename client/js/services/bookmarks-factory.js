@@ -1,11 +1,13 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular
-  .module('bookmarkApp')
-  .factory('Bookmark', Bookmark);
+  angular
+    .module('bookmarkApp')
+    .factory('Bookmark', Bookmark);
 
-Bookmark.$inject = ['$resource'];
+  Bookmark.$inject = ['$resource'];
 
-function Bookmark ($resource) {
-  return $resource('/api/bookmarks/:id');
-}
+  function Bookmark ($resource) {
+    return $resource('/api/bookmarks/:id');
+  }
+})();

@@ -1,8 +1,10 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular
-  .module('bookmarkApp')
-  .constant('angularMomentConfig', {
-    preprocess: 'utc',
-    timezone: 'Europe/London'
-  });
+  angular
+    .module('bookmarkApp')
+    .constant('angularMomentConfig', {
+      preprocess: 'utc',
+      timezone: 'Europe/London'
+    });
+})();
