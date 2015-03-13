@@ -31,9 +31,8 @@
 
     $scope.removeBookmark = function (bookmark) {
       Bookmark.remove({ id: bookmark._id }, function() {
-        $scope.bookmarks.forEach(function (bk, index) {
-          if (bk._id === bookmark._id) { $scope.bookmarks.splice(index, 1); }
-        });
+        var index = $scope.bookmarks.indexOf(bookmark);
+        $scope.bookmarks.splice(index, 1);
       });
     };
 

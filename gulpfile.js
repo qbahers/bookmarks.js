@@ -29,7 +29,7 @@ gulp.task('clean', function(cb) {
 });
 
 // Styles
-gulp.task('styles', ['clean'], function() {
+gulp.task('styles', function() {
   return sass(paths.styles, {style: 'expanded'})
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('build/css'))
@@ -40,7 +40,7 @@ gulp.task('styles', ['clean'], function() {
 });
 
 // Scripts
-gulp.task('scripts', ['clean'], function() {
+gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
@@ -53,7 +53,7 @@ gulp.task('scripts', ['clean'], function() {
 });
  
 // Copy all static images
-gulp.task('images', ['clean'], function() {
+gulp.task('images', function() {
   //return gulp.src(paths.images)
   //  .pipe(cache(imagemin({ optimizationLevel: 5})))
   //  .pipe(gulp.dest('build/img'))
@@ -73,4 +73,6 @@ gulp.task('watch', function() {
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['watch', 'scripts', 'images', 'styles']);
+gulp.task('default', ['clean'], function() {
+  gulp.start('watch', 'scripts', 'images', 'styles');
+});
