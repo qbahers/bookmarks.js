@@ -11,4 +11,6 @@ Yet another bookmarking app.
 - Gulp
 - Moment.js
 
+### About
+
 Made by Quentin Bahers under the ~~rain~~ :sunny: of London.
