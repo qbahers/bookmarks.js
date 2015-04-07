@@ -5,15 +5,16 @@
         <button type="button" class="close" ng-click="$hide()">&times;</button>
         <h4 class="modal-title" id="myModalLabel">New bookmark</h4>
       </div>
-      <form>
+
+      <form name="bookmarkForm" ng-submit="bookmarkForm.$valid && createBookmark(bookmark)" novalidate>
         <div class="modal-body">
           <div class="form-group">
-            <label for="bookmark-url" class="control-label">Url:</label>
-            <input type="text" class="form-control" id="bookmark-url" ng-model="bookmark.url">
+            <label for="bookmark-url" class="control-label">Url (required):</label>
+            <input type="url" class="form-control" id="bookmark-url" ng-model="bookmark.url" required>
           </div>
           <div class="form-group">
-            <label for="bookmark-name" class="control-label">Name:</label>
-            <input type="text" class="form-control" id="bookmark-name" ng-model="bookmark.name">
+            <label for="bookmark-name" class="control-label">Name (required):</label>
+            <input type="text" class="form-control" id="bookmark-name" ng-model="bookmark.name" required>
           </div>
           <div class="form-group">
             <label for="bookmark-tags" class="control-label">Tags:</label>
@@ -22,7 +23,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
-          <button type="submit" class="btn btn-primary" ng-click="createBookmark(bookmark)">Save</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </form>
     </div>
